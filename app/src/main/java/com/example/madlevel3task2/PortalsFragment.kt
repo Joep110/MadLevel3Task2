@@ -1,5 +1,6 @@
 package com.example.madlevel3task2
 
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -8,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.LinearLayout
+import androidx.browser.customtabs.CustomTabsIntent
 import androidx.fragment.app.setFragmentResultListener
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
@@ -21,7 +23,7 @@ import kotlinx.android.synthetic.main.fragment_portals.*
 class PortalsFragment : Fragment() {
 
     private val portals = arrayListOf<Portal>()
-    private val portalAdapter = PortalAdapter(portals)
+    private val portalAdapter = PortalAdapter(portals) { portal: Portal -> itemClicked(portal) }
 
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
@@ -56,7 +58,11 @@ class PortalsFragment : Fragment() {
                 Log.e("PortalsFragment", "Request triggered, but empty portal name or url!")
             }
 
-
         }
+    }
+
+    private fun itemClicked(portalItem: Portal) {
+        val builder = CustomTabsIntent.Builder().build()
+        context?.let { builder.launchUrl(it, Uri.parse(Uri.decode(portalItem.portalLink))) }
     }
 }
