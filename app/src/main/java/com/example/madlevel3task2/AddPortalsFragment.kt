@@ -6,7 +6,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.Toast
+import androidx.core.os.bundleOf
+import androidx.fragment.app.setFragmentResult
 import androidx.navigation.fragment.findNavController
+import kotlinx.android.synthetic.main.fragment_add_portals.*
+
+const val REQ_PORTAL_KEY = "req_reminder"
+const val BUNDLE_PORTAL_NAME = "bundle_reminder"
+const val BUNDLE_PORTAL_URL = "bundle_reminder"
 
 /**
  * A simple [Fragment] subclass as the second destination in the navigation.
@@ -23,5 +31,24 @@ class AddPortalsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        btnAddPortal.setOnClickListener {
+            onAddPortal()
+        }
+    }
+
+    private fun onAddPortal() {
+        val portalText = eTxtTitle.text.toString()
+        val portalUrl = eTxtUrl.text.toString()
+
+        if (portalText.isNotBlank() && portalUrl.isNotBlank()) {
+            setFragmentResult(REQ_PORTAL_KEY, bundleOf(Pair(BUNDLE_PORTAL_NAME, portalText), Pair(BUNDLE_PORTAL_URL, portalUrl)))
+
+            findNavController().popBackStack()
+        } else {
+            Toast.makeText(
+                activity,
+                R.string.not_valid_portal, Toast.LENGTH_SHORT
+            ).show()
+        }
     }
 }

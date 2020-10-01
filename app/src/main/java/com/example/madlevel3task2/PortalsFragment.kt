@@ -40,4 +40,8 @@ class PortalsFragment : Fragment() {
         rvPortals.adapter = portalAdapter
         portalAdapter.notifyDataSetChanged()
     }
+
+    private fun observeAddPortalResult() {
+
+    }
 }

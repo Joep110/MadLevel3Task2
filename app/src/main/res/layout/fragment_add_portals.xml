@@ -12,7 +12,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="21dp"
         android:layout_marginTop="25dp"
+        android:layout_marginBottom="10dp"
         android:text="@string/add_portal_title"
+        app:layout_constraintBottom_toTopOf="@+id/eTxtTitle"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -21,9 +23,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="1dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginBottom="19dp"
         android:ems="10"
         android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/textView2"
         app:layout_constraintStart_toStartOf="@+id/textView"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
@@ -32,8 +35,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="22dp"
-        android:layout_marginTop="19dp"
+        android:layout_marginBottom="22dp"
         android:text="@string/add_portal_add_url"
+        app:layout_constraintBottom_toTopOf="@+id/eTxtUrl"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/eTxtTitle" />
 
@@ -42,10 +46,24 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="22dp"
-        android:layout_marginTop="21dp"
+        android:layout_marginBottom="100dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="@string/add_portal_add_url_text"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <Button
+        android:id="@+id/btnAddPortal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="15dp"
+        android:layout_marginBottom="20dp"
+        android:background="@color/colorPrimaryDark"
+        android:text="@string/add_portal_btn"
+        android:textColor="@android:color/white"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

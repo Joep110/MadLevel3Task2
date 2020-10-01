@@ -26,6 +26,18 @@ class MainActivity : AppCompatActivity() {
                 R.id.action_portalsFragment_to_addPortalsFragment
             )
         }
+
+        fabToggler()
+    }
+
+    private fun fabToggler() {
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            if (destination.id in arrayOf(R.id.addPortalsFragment)) {
+                fab.hide()
+            } else {
+                fab.show()
+            }
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
